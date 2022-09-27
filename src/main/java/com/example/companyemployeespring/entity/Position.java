@@ -1,2 +1,7 @@
-package com.example.companyemployeespring.entity;public enum Position {
+package com.example.companyemployeespring.entity;
+
+public enum Position {
+    MANAGER,
+    ACCOUNTANT,
+    DIRECTOR
 }

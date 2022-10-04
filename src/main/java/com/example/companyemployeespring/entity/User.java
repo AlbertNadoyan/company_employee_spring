@@ -4,21 +4,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.annotation.security.DenyAll;
 import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "companies")
-public class Company {
+@Table(name = "user")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private int size;
+    private String surname;
+    private String email;
+    private String password;
     @Enumerated(value = EnumType.STRING)
-    private Address address;
-    @ManyToOne
-    private User User;
+    private UserRole userRole;
 }

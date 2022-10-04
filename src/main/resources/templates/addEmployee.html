@@ -18,7 +18,7 @@
             <option th:each="position: ${positions}" th:text="${position.name()}" th:value="${position.name()}"></option>
         </select>
         <input type="file" name="employeeImage">
-        <select name="company.id">
+        <select name="company">
             <option value="" selected disabled hidden>Choose Company</option>
             <option th:each="companies: ${company}" th:text="${companies.name}" th:value="${companies.id}"></option>
         </select>

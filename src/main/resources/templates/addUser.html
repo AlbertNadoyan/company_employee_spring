@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADd User</title>
+</head>
+<body>
+<div class="add_user">
+  <h1>Add</h1>
+  <form action="/user/add" method="post">
+    <input type="text" name="name" placeholder="input name">
+    <input type="text" name="surname" placeholder="input surname">
+    <input type="email" name="email" placeholder="input email">
+    <span style="color: red" th:if="${errorMessage != null}" th:text="${errorMessage}"></span>
+    <input type="password" name="password" placeholder="input password">
+    <select name="userRole" id="">
+      <option value="" selected disabled hidden>Choose role</option>
+      <option th:each="roles: ${role}" th:text="${roles.name()}" th:value="${roles.name()}"></option>
+    </select>
+    <input type="submit" value="ADD USER">
+  </form>
+</div>
+
+</body>
+</html>

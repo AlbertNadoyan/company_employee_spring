@@ -48,7 +48,7 @@ public class EmployeeController {
 
     @PostMapping("/employee/add")
     public String addEmployee(@ModelAttribute Employee employee, @RequestParam("employeeImage") MultipartFile file) throws IOException {
-        if(file.isEmpty() && file.getSize() > 0){
+        if(!file.isEmpty()){
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
             File newFile = new File(folderPath + File.separator + fileName);
             file.transferTo(newFile);
@@ -68,12 +68,8 @@ public class EmployeeController {
     }
 
     @GetMapping("employee/delete/{id}")
-    public String deleteEmployee(@ModelAttribute Company company,  Employee employee, @PathVariable("id") int id){
-        if(company.getName().equals(employee.getCompany().getName())){
-            company.setSize(company.getSize() - 1);
-            employeeRepository.deleteById(id);
-            companyRepository.save(company);
-        }
+    public String deleteEmployee(@PathVariable("id") int id){
+        employeeRepository.deleteById(id);
         return "redirect:/employees";
     }
 

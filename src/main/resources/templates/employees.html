@@ -28,12 +28,12 @@
             <td th:text="${employee.salary}"></td>
             <td th:text="${employee.position}"></td>
             <td>
-                <img th:src="@{/employee/getImage(fileName=${employee.profilePic})}" alt="">
+                <img th:src="@{/employee/getImage(fileName=${employee.profilePic})}" width="100px" alt="">
             </td>
             <td th:text="${employee.company.name}"></td>
             <td>
                 <a href="/employee/add">ADD</a>
-                <a th:href="@{/employee/delete{id}(id=${employee.getId()})}">DELETE</a>
+                <a th:href="@{/employee/delete/{id}(id=${employee.getId()})}">DELETE</a>
             </td>
         </tr>
     </table>

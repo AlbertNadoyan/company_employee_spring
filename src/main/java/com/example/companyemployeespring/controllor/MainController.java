@@ -9,4 +9,9 @@ public class MainController {
     public String mainPage(){
         return "index";
     }
+
+    @GetMapping("/accessDenied")
+    public String accessDenied(){
+        return "accessDenied";
+    }
 }

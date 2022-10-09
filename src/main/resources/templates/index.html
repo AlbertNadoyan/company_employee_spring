@@ -6,11 +6,16 @@
 </head>
 <body>
 <div class="container">
-    <a href="/companies">Companies</a>
-    <a href="/employees">Employees</a>
-    <a href="/users">Users</a>
-    <a href="/user/add">Add User</a>
-    <a href="/company/add">Add Company</a>
+    <a href="/companies" th:text="#{companies}"></a>
+    <a href="/employees" th:text="#{employees}"></a>
+    <a href="/users" th:text="#{users}">Users</a>
+    <a href="/user/add" th:text="#{add_user}">Add User</a>
+    <a href="/company/add" th:text="#{add_company}"></a>
+</div>
+<div class="change_language">
+    <a href="?lang=en">English</a>
+    <a href="?lang=hy">Հայերեն</a>
+    <a href="?lang=ru">Русский</a>
 </div>
 
 

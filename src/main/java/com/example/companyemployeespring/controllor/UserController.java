@@ -3,6 +3,8 @@ package com.example.companyemployeespring.controllor;
 import com.example.companyemployeespring.entity.User;
 import com.example.companyemployeespring.entity.UserRole;
 import com.example.companyemployeespring.repository.UserRepository;
+import com.example.companyemployeespring.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,16 +17,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequiredArgsConstructor
 public class UserController {
-    @Autowired
-    private UserRepository userRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final UserService userService;
 
     @GetMapping("/users")
     public String users(ModelMap modelMap){
-        List<User> usersList = userRepository.findAll();
+        List<User> usersList = userService.findAllUser();
         modelMap.addAttribute("users", usersList);
         return "users";
     }
@@ -38,13 +38,12 @@ public class UserController {
 
     @PostMapping("/user/add")
     public String addUser(@ModelAttribute User user, ModelMap modelMap){
-        Optional<User> byEmail = userRepository.findByEmail(user.getEmail());
+        Optional<User> byEmail = userService.findByEmail(user.getEmail());
         if(byEmail.isPresent()){
             modelMap.addAttribute("errorMessage", "email already in use");
             return "addUser";
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        userService.saveUserWithPass(user);
         return "redirect:/users";
     }
 

@@ -5,6 +5,7 @@ import com.example.companyemployeespring.entity.Company;
 import com.example.companyemployeespring.entity.Employee;
 import com.example.companyemployeespring.repository.CompanyRepository;
 import com.example.companyemployeespring.repository.EmployeeRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,11 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class CompanyController {
-    @Autowired
-    private CompanyRepository companyRepository;
-    @Autowired
-    private EmployeeRepository employeeRepository;
+
+    private final CompanyRepository companyRepository;
+
+    private final EmployeeRepository employeeRepository;
 
     @GetMapping("/companies")
     public String companies(ModelMap modelMap){

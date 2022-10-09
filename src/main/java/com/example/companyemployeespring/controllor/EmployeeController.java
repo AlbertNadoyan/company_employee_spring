@@ -48,7 +48,7 @@ public class EmployeeController {
 
     @PostMapping("/employee/add")
     public String addEmployee(@ModelAttribute Employee employee, @RequestParam("employeeImage") MultipartFile file) throws IOException {
-        if(!file.isEmpty()){
+        if(file.isEmpty()){
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
             File newFile = new File(folderPath + File.separator + fileName);
             file.transferTo(newFile);
